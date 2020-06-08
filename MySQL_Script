@@ -1,0 +1,71 @@
+#create database
+CREATE database Task;
+#use the created data base
+USE Task;
+#create a table 
+CREATE TABLE Users(
+id INT AUTO_INCREMENT, ## auto genration of ID
+Name varchar(100),  ## name is of type variable charter length of 100 
+Type varchar(50),  ## name is of type variable charter length of 50
+PRIMARY KEY (id) ## primary to uniquly identify the ID 
+
+);
+# check the created table description
+DESCRIBE Users;
+
+## insert data inside the table
+INSERT INTO Users (Name ,Type) VALUES
+('Khaled Mohamed','employee'),
+('Mohamed abdo ','employee'),
+('abdo salama','employee'),
+('ismael bishi','employee'),
+('sara mohamed','employee'),
+('asmaa abdelrahman','employee'),
+('Esraa khaled','employee'),
+('amgad ibrhaim','manager'),
+('khaled mokhtar','manager'),
+('mohamed amin','manager'),
+('salma salama','manager'),
+('sara abdsalama','manager'),
+('basma khaled','manager'),
+('Esraa khaled','manager');
+
+## disable safe update for the data to easly mainpulate the sql data 
+SET SQL_SAFE_UPDATES = 0;
+
+## retrive all Users data orderd  ascending  by ID number 
+Select * from Users order by id asc;
+
+## retrive all Users data orderd  decending ordered by ID number 
+select * from users order by id desc;
+# identify the how many users are avilable 
+Select count(*) from Users;
+# idetify the number of empoyees  users
+Select count(*) from Users where type="employee";
+# idetify the number of manager users 
+Select count(*) from Users where type="manager";
+
+## insert new a new user data and retrieve the ID number 
+INSERT INTO Users (Name ,Type) VALUES
+('Isalam Abbas','employee'); 
+## get the ID number of the regesited user
+Select id from Users where name="Isalam Abbas" and type="employee";
+
+## edite the User name of the last added employee and validate the editted value
+UPDATE Users SET Name = "Abdo Abbas" Where ID=15; 
+Select * from Users where ID=15;
+
+## delete the last added User and check if its deleted 
+DELETE FROM Users WHERE ID=15;
+Select * from Users;
+
+## delete the last added User and check if its deleted 
+DELETE FROM Users WHERE ID=15;
+Select * from Users;
+
+## retrive spesfic group of users
+select * from users where name in("Esraa khaled",'sara abdsalama');
+
+## retrive all user between spsic ID values
+select * from users where id between 8 and 10;
+
